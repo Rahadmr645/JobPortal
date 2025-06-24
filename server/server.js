@@ -1,7 +1,9 @@
 import express from "express"
-import  connectToMongo from './config/db.js'
 import dotenv from 'dotenv';
 dotenv.config();
+import cors from 'cors'
+import connectToMongo from './config/db.js'
+import userRoutes  from "./routes/userRoutes.js";
 const app = express();
 
 const port = process.env.port;
@@ -9,8 +11,13 @@ export const DB_URL = process.env.DB_URL;
 
 
 app.use(express.json())
-connectToMongo ();
-app.use("/",(req,res) => {
+connectToMongo();
+app.use(cors());
+
+// routes section
+app.use('/api/user', userRoutes)
+
+app.use("/", (req, res) => {
   res.send('well come')
 })
 
