@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-
+import axios from "axios"
 const Login = () => {
 
     const [showForm, setShowForm] = useState(false);
     const [currState, setCurrState] = useState('Login');
 
 
+    const URL = 'http://192.168.8.221:4002'
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -22,9 +23,30 @@ const Login = () => {
         }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData)
+         const endpoint = currState === "Login"? `${URL}/api/user/login`
+         : `${URL}/api/user/create`;
+         
+         try{
+           const response = await axios.post(endpoint, formData);
+           const data = response.data;
+           
+           if(currState === "Login") {
+             localStorage.setItem("token", data.token);
+             window.location.href = '/';
+           } else {
+             alert("Signup successfull Now log in");
+             setCurrState("Login")
+           }
+         } catch(error) {
+           if(error.response && error.response.data) {
+             alert(error.response.data.message || "Login/signup fail")
+           }else {
+             alert("server error please try again")
+           }
+           console.error("AXIOS FULL ERROR:", error.toJSON());
+         }
     }
 
 
@@ -38,7 +60,7 @@ const Login = () => {
                 {currState === 'SignUp' ?
                     <div className="mb-3 " >
                         <label htmlFor="exampleInputname" className="form-label">Username</label>
-                        <input type="email" className="form-control" id="exampleInputname" aria-describedby="nameHelp"
+                        <input type="text" className="form-control" id="exampleInputname" aria-describedby="nameHelp"
                             value={formData.name}
                             name='name'
                             onChange={handleChange}

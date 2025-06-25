@@ -12,7 +12,12 @@ export const DB_URL = process.env.DB_URL;
 
 app.use(express.json())
 connectToMongo();
-app.use(cors());
+app.use(cors(
+  {
+    origin :
+    'http://192.168.8.221:5173',
+    credentials: true
+  }));
 
 // routes section
 app.use('/api/user', userRoutes)
@@ -23,6 +28,6 @@ app.use("/", (req, res) => {
 
 
 
-app.listen(port, () => {
-  console.log(`Your app is running on http://localhost:${port}`)
+app.listen(port,'0.0.0.0', () => {
+  console.log(`Your app is running on http://192.168.8.221:${port}`)
 })
