@@ -6,7 +6,7 @@ const Login = () => {
     const [currState, setCurrState] = useState('Login');
 
 
-    const URL = 'http://192.168.8.221:4002'
+    const URL = 'http://localhost:4002'
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -32,6 +32,7 @@ const Login = () => {
            const response = await axios.post(endpoint, formData);
            const data = response.data;
            
+           console.log('post to ', endpoint)
            if(currState === "Login") {
              localStorage.setItem("token", data.token);
              window.location.href = '/';
