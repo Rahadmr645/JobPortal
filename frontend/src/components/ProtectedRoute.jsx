@@ -9,8 +9,8 @@ const ProtectedRoute = ({ children }) => {
   if (!auth) {
     return <Navigate to='/login' replace />
   }
-  return children
+  return children;
 
 }
 
-export default ProtectedRoute
+export default ProtectedRoute;

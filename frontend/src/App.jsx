@@ -5,6 +5,8 @@ import Login from './pages/Login'
 import Home from './pages/Home'
 import DashBoard from './pages/DashBoard'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
+import JobList from './components/JobList.jsx'
+import JobsRegister from './features/jobs/JobsRegister.jsx'
 
 const App = () => {
   return (
@@ -16,11 +18,10 @@ const App = () => {
           </ProtectedRoute>
         } />
         <Route path='/dashBoard' element={
-
           <DashBoard />
-
         } />
         <Route path='/login' element={<Login />} />
+        <Route path='jobsRegister' element={<JobsRegister />} />
       </Routes>
     </div>
   )
