@@ -6,8 +6,7 @@ import { StoreContext } from '../../context/storeContext'
 const JobsRegister = () => {
 
     const { setShowForm } = useContext(StoreContext);
-    const URL = 'http://localhost:4002'
-
+    const { fetchJobs, URL } = useContext(StoreContext)
     const [jobForm, setJobForm] = useState({
         title: '',
         description: '',
@@ -56,6 +55,7 @@ const JobsRegister = () => {
                 type: '',
             })
             setShowForm(false);
+            fetchJobs();
         } catch (error) {
             if (error.response && error.response.data) {
                 console.log('axios error:', error.response.data);

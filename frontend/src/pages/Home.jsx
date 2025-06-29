@@ -15,7 +15,7 @@ const Home = () => {
     <div style={{position:'relative', minHeight: '100vh', border: '1px solid red'}}>
       <Navbar />
       {showForm && 
-      <JobsRegister style={{ position: 'absolute', zIndex: '1', top: 0 }} />}
+      <JobsRegister  />}
       {/* hero section */}
       <div className='hero-section'>
         <div className='d-flex flex-column justify-content-center align-items-center text-center'>

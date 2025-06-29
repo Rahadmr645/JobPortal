@@ -1,5 +1,5 @@
 import Job from "../models/Job.js";
-
+import User from "../models/User.js";
 // post /api/jobs -create job
 export const createJob = async (req, res) => {
     const { title, description, company, location, type } = req.body;
@@ -19,8 +19,19 @@ export const createJob = async (req, res) => {
     res.status(201).json(createdJob);
 }
 
-// get api/jobs - all jobs
+
+
+// Get all jobs
 export const getJobs = async (req, res) => {
-    const jobs = await Job.find().sort({ createdAt: -1 });
-    res.json(jobs)
-}
+    try {
+        // Fetch all jobs and populate the createdBy field with the user's name
+        const jobs = await Job.find()
+            .populate('createdBy', 'name')  // Populate with the user's name
+            .sort({ createdAt: -1 });      // Sort jobs by createdAt in descending order
+
+        res.status(200).json({ message: "Here are all the jobs", jobs });
+    } catch (err) {
+        console.error("Error fetching jobs:", err);
+        res.status(500).json({ message: 'Server error', error: err.message });
+    }
+};

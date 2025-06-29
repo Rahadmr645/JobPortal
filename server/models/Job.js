@@ -1,4 +1,4 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose  from "mongoose";
 
 
 const jobSchema = new mongoose.Schema({
@@ -7,7 +7,7 @@ const jobSchema = new mongoose.Schema({
     company: { type: String, required: true },
     location: { type: String, required: true },
     type: { type: String },
-    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User", requireed: true },
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "user", requireed: true },
 }, { timestamps: true });
 
 const Job = mongoose.model('Job', jobSchema);
