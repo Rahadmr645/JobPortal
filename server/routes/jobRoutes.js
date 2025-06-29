@@ -4,7 +4,7 @@ import { protect } from "../middleware/authMiddleware.js";
 import  rahadMiddle  from "../middleware/rahadMiddle.js";
 const router = express.Router();
 
-router.get('/all-jobs', getJobs); // public 
+router.get('/all-jobs',protect, getJobs); // public 
 
 router.post('/create-job', protect,  createJob); // authenticated users only
 

@@ -1,11 +1,14 @@
-import React,{useContext, useState} from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { StoreContext } from '../context/storeContext';
 const Navbar = () => {
 
-    
- const {setshowForm} = useContext(StoreContext);
+
+    const { setShowForm } = useContext(StoreContext);
+    const token = localStorage.getItem("token");
+
     return (
+    
         <nav className='navbar container navbar-expand-lg  mt-2 '>
             <div className='d-flex  justify-content-evenly  align-items-center w-100' >
                 <div className='fw-bold fs-2'>
@@ -14,20 +17,20 @@ const Navbar = () => {
                 <div>
                     <ul className='list-unstyled d-flex justify-content-center w-100 align-items-center  gap-5 mt-1' style={{ fontSize: '20px' }}>
                         <Link to='/'>Home</Link>
-                        <li onClick={() => setshowForm(true)} >Jobs</li>
-                        <li>Application</li>
-                    </ul>
+                        <li style={{cursor:'pointer'}} onClick={() => setShowForm(true)} >Jobs</li>
+                    <li onClick={() => console.log(token)}>Application</li>
+                </ul>
 
-                </div>
-                <div>
+            </div>
+            <div>
 
-                    {/* <button className='btn bg-dark text-light'>
+                {/* <button className='btn bg-dark text-light'>
                         Profile
                     </button> */}
-                    <button className='btn bg-dark text-light fw-bold'>Sign In</button>
-                </div>
+                <button className='btn bg-dark text-light fw-bold'>Sign In</button>
             </div>
-        </nav>
+        </div>
+        </nav >
     )
 }
 

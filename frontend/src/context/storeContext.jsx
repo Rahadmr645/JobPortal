@@ -12,7 +12,7 @@ export const ContextProvider = ({ children }) => {
    
     const [showForm, setShowForm] = useState(false);
 
-
+ const a = 'rahad'
 
 
 
@@ -23,6 +23,7 @@ export const ContextProvider = ({ children }) => {
         setState,
         showForm,
         setShowForm,
+        a,
     }
     return (
         <StoreContext.Provider value={contextValue}>
