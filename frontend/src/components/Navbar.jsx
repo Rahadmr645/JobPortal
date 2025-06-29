@@ -1,6 +1,10 @@
-import React from 'react'
-
+import React,{useContext, useState} from 'react'
+import { Link } from 'react-router-dom'
+import { StoreContext } from '../context/storeContext';
 const Navbar = () => {
+
+    
+ const {setshowForm} = useContext(StoreContext);
     return (
         <nav className='navbar container navbar-expand-lg  mt-2 '>
             <div className='d-flex  justify-content-evenly  align-items-center w-100' >
@@ -9,10 +13,11 @@ const Navbar = () => {
                 </div>
                 <div>
                     <ul className='list-unstyled d-flex justify-content-center w-100 align-items-center  gap-5 mt-1' style={{ fontSize: '20px' }}>
-                        <li>Home</li>
-                        <li>Jobs</li>
+                        <Link to='/'>Home</Link>
+                        <li onClick={() => setshowForm(true)} >Jobs</li>
                         <li>Application</li>
                     </ul>
+
                 </div>
                 <div>
 

@@ -4,7 +4,7 @@ import Job from "../models/Job.js";
 export const createJob = async (req, res) => {
     const { title, description, company, location, type } = req.body;
 
-    if (!title || !description || !company) return res.status(400).json({ message: "All fields are required" });
+    if (!title || !description || !company || !location) return res.status(400).json({ message: "All fields are required" });
 
     const job = new Job({
         title,

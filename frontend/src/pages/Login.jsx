@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import axios from "axios"
+
 const Login = () => {
+
+
 
     const [showForm, setShowForm] = useState(false);
     const [currState, setCurrState] = useState('Login');
@@ -25,29 +28,29 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-         const endpoint = currState === "Login"? `${URL}/api/user/login`
-         : `${URL}/api/user/create`;
-         
-         try{
-           const response = await axios.post(endpoint, formData);
-           const data = response.data;
-           
-           console.log('post to ', endpoint)
-           if(currState === "Login") {
-             localStorage.setItem("token", data.token);
-             window.location.href = '/';
-           } else {
-             alert("Signup successfull Now log in");
-             setCurrState("Login")
-           }
-         } catch(error) {
-           if(error.response && error.response.data) {
-             alert(error.response.data.message || "Login/signup fail")
-           }else {
-             alert("server error please try again")
-           }
-           console.error("AXIOS FULL ERROR:", error.toJSON());
-         }
+        const endpoint = currState === "Login" ? `${URL}/api/user/login`
+            : `${URL}/api/user/create`;
+
+        try {
+            const response = await axios.post(endpoint, formData);
+            const data = response.data;
+
+            console.log('post to ', endpoint)
+            if (currState === "Login") {
+                localStorage.setItem("token", data.token);
+                window.location.href = '/';
+            } else {
+                alert("Signup successfull Now log in");
+                setCurrState("Login")
+            }
+        } catch (error) {
+            if (error.response && error.response.data) {
+                alert(error.response.data.message || "Login/signup fail")
+            } else {
+                alert("server error please try again")
+            }
+            console.error("AXIOS FULL ERROR:", error.toJSON());
+        }
     }
 
 

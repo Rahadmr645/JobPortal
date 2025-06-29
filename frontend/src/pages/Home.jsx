@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from '../components/Navbar'
 import { CiLocationOn } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
 import JobList from '../components/JobList';
+import { StoreContext } from '../context/storeContext';
 const Home = () => {
+  
+
+  const { showForm, setShowForm } = useContext(StoreContext);
   return (
-    <div>
+    <div className='position-relative'>
       <Navbar />
+      {showForm && <JobsRegister style={{ position: 'absolute', zIndex: '1' }} />}
       {/* hero section */}
       <div className='hero-section'>
         <div className='d-flex flex-column justify-content-center align-items-center text-center'>
