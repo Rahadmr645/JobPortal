@@ -5,6 +5,7 @@ import cors from 'cors'
 import connectToMongo from './config/db.js'
 import userRoutes from "./routes/userRoutes.js";
 import jobRoutes from './routes/jobRoutes.js'
+import adminRoutes from './routes/adminRoutes.js';
 const app = express();
 
 const port = process.env.port;
@@ -15,9 +16,11 @@ app.use(express.json())
 connectToMongo();
 app.use(cors());
 
+
 // routes section
 app.use('/api/user', userRoutes)
 app.use('/api/jobs', jobRoutes)
+app.use('/api/admin', adminRoutes)
 app.use("/", (req, res) => {
   res.send('well come')
 })

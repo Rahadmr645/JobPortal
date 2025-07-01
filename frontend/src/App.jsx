@@ -7,19 +7,21 @@ import DashBoard from './pages/DashBoard'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import JobList from './components/JobList.jsx'
 import JobsRegister from './features/jobs/JobsRegister.jsx'
+import Admin from './features/admin/Admin.jsx'
 
 const App = () => {
   return (
     <div>
       <Routes>
         <Route path='/' element={
-       <Home /> 
+          <Home />
         } />
         <Route path='/dashBoard' element={
           <ProtectedRoute><DashBoard /></ProtectedRoute>
         } />
         <Route path='/login' element={<Login />} />
         <Route path='jobsRegister' element={<JobsRegister />} />
+        <Route path='/admin' element={<Admin />} />
       </Routes>
     </div>
   )

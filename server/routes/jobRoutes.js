@@ -8,5 +8,4 @@ router.get('/all-jobs', getJobs); // public
 
 router.post('/create-job', protect,  createJob); // authenticated users only
 
-
 export default router;

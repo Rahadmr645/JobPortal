@@ -3,19 +3,9 @@ import { Link } from 'react-router-dom'
 import { StoreContext } from '../context/storeContext';
 const Navbar = () => {
 
-    const [login, setLogin] = useState(false);
-    const [signBtn, setSignBtn] = useState("Sign In");
-    const { setShowForm } = useContext(StoreContext);
-    const token = localStorage.getItem("token");
 
-    const chackeLogin = () => {
-        if (token) {
-            setLogin(true);
-            setSignBtn("Logout");
-        } else {
-            setLogin(false);
-        }
-    }
+    const { setShowForm, setLogin, login, chackeLogin, signBtn, setSignBtn } = useContext(StoreContext);
+
     useEffect(() => {
         chackeLogin();
     }, [])
