@@ -13,12 +13,10 @@ const App = () => {
     <div>
       <Routes>
         <Route path='/' element={
-          <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>
+       <Home /> 
         } />
         <Route path='/dashBoard' element={
-          <DashBoard />
+          <ProtectedRoute><DashBoard /></ProtectedRoute>
         } />
         <Route path='/login' element={<Login />} />
         <Route path='jobsRegister' element={<JobsRegister />} />

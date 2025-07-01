@@ -17,13 +17,13 @@ export const ContextProvider = ({ children }) => {
 
     // Fetch all the jobs from the server
     const fetchJobs = async () => {
-        const token = localStorage.getItem('token');
-        console.log('Token in localStorage:', token); // Log the token to verify it's available
+        // const token = localStorage.getItem('token');
+        // console.log('Token in localStorage:', token); // Log the token to verify it's available
 
-        if (!token) {
-            alert("You are not authenticated");
-            return;
-        }
+        // if (!token) {
+        //     alert("You are not authenticated");
+        //     return;
+        // }
 
         if (!URL) {
             console.log('Error: URL is undefined');
@@ -33,7 +33,7 @@ export const ContextProvider = ({ children }) => {
         try {
             const response = await axios.get(`${URL}/api/jobs/all-jobs`, {
                 headers: {
-                    Authorization: `Bearer ${token}`, // Send token as authorization header
+                    // Authorization: `Bearer ${token}`, // Send token as authorization header
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
                 }
