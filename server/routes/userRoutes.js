@@ -5,6 +5,9 @@ import JWT from 'jsonwebtoken'
 import dotenv from 'dotenv'
 import validator from 'validator'
 import isDisposableEmail from 'is-disposable-email';
+import {protect }from '../middleware/authMiddleware.js'
+import upload from '../middleware/imageMiddleware.js'
+import { edithProfile } from "../controllers/userController.js";
 dotenv.config();
 const router = express.Router();
 
@@ -79,5 +82,13 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ message: 'Enternal erro', error: error.message })
   };
 })
+
+
+
+// edith routes
+router.put('/update', protect, upload.single('image'), edithProfile)
+
+
+
 
 export default router;
