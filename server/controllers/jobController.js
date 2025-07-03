@@ -35,3 +35,17 @@ export const getJobs = async (req, res) => {
         res.status(500).json({ message: 'Server error', error: err.message });
     }
 };
+
+export const deleteJobs = async (req,res) => {
+  
+  try {
+    const { id } = req.body;
+    
+    if(!id ) return res.status(404).json({message:"please inter the id"})
+    
+    await Job.findByIdAndDelete(id);
+    res.status(200).json({message:"job delete complate"});
+  } catch(error){
+    res.status(500).json({message:"faild to delete",error:error.message})
+  }
+}
