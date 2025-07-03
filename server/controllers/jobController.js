@@ -39,7 +39,7 @@ export const getJobs = async (req, res) => {
 export const deleteJobs = async (req,res) => {
   
   try {
-    const { id } = req.body;
+    const { id } = req.params;
     
     if(!id ) return res.status(404).json({message:"please inter the id"})
     

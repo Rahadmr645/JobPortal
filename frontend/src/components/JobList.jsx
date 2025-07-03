@@ -23,7 +23,7 @@ const JobList = () => {
                 {jobs.length > 0 ? jobs.map((job) => {
                     return (
 
-                        <JobsView key={job._id} title={job.title} description={job.description} company={job.company} location={job.location} type={job.type} time={job.createdAt} ownar={job.createdBy?.name} />
+                        <JobsView key={job._id} title={job.title} description={job.description} company={job.company} location={job.location} type={job.type} time={job.createdAt} ownar={job.createdBy?.name} id={job._id}/>
                     )
                 })
                     : <p>Opps there is no jobs yet</p>}

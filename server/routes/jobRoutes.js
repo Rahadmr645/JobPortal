@@ -8,5 +8,5 @@ router.get('/all-jobs', getJobs); // public
 
 router.post('/create-job', protect,  createJob); // authenticated users only
 
-router.delete('/delete-job', protect, deleteJobs )
+router.delete('/delete-job/:id', deleteJobs )
 export default router;
