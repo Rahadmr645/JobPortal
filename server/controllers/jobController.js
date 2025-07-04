@@ -49,3 +49,12 @@ export const deleteJobs = async (req,res) => {
     res.status(500).json({message:"faild to delete",error:error.message})
   }
 }
+ 
+ 
+ export const editJob = async (req,res) => {
+      try {
+        
+      }catch(error) {
+        
+      }
+ }
