@@ -1,11 +1,14 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import { FaRegEdit } from "react-icons/fa";
-import { MdDeleteOutline } from "react-icons/md"; 
+import { MdDeleteOutline } from "react-icons/md";
 import { StoreContext } from '../context/storeContext';
+import { useState } from 'react';
 
-const JobsView = ({id, title, description, company, location, type, time, ownar }) => {
-  
-  const {deleteJobs} = useContext(StoreContext)
+const JobsView = ({ id, title, description, company, location, type, time, ownar }) => {
+
+
+
+    const { deleteJobs, editFormShow, setEditFormShow } = useContext(StoreContext)
     return (
         <div className='job-view'>
             <h1>
@@ -23,16 +26,16 @@ const JobsView = ({id, title, description, company, location, type, time, ownar 
             </p>
             <p>
                 <strong>Type:</strong>  {type}
-               
+
             </p>
             <p>
-             <strong>Posted at: </strong>  
-             {new Date(time).toLocaleDateString()}
+                <strong>Posted at: </strong>
+                {new Date(time).toLocaleDateString()}
             </p>
             <p>Made By: {ownar}</p>
             <div className="jobs-icons">
-              <p><FaRegEdit  /> </p>
-            <p onClick={() => deleteJobs(id)} > <MdDeleteOutline /> </p>
+                <p onClick={() => setEditFormShow(true)}> <FaRegEdit /> </p>
+                <p onClick={() => deleteJobs(id)} > <MdDeleteOutline /> </p>
             </div>
         </div>
     )

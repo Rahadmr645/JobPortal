@@ -5,17 +5,21 @@ import { CiSearch } from "react-icons/ci";
 import JobList from '../components/JobList';
 import { StoreContext } from '../context/storeContext';
 import JobsRegister from '../features/jobs/JobsRegister';
+import EditJobs from '../components/EditJobs';
 
 const Home = () => {
   
   
 
-  const { showForm } = useContext(StoreContext);
+  const { showForm,editFormShow, setEditFormShow } = useContext(StoreContext);
+
   return (
     <div style={{position:'relative', minHeight: '100vh', border: '1px solid red'}}>
       <Navbar />
       {showForm && 
       <JobsRegister  />}
+
+      {editFormShow && <EditJobs/>}
       {/* hero section */}
       <div className='hero-section'>
         <div className='d-flex flex-column justify-content-center align-items-center text-center'>

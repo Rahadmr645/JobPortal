@@ -13,6 +13,7 @@ export const ContextProvider = ({ children }) => {
     const [signBtn, setSignBtn] = useState("Sign In");
     const [showForm, setShowForm] = useState(false);
     const [jobs, setJobs] = useState([]);
+    const [editFormShow, setEditFormShow] = useState(false);
     const [user, setUser] = useState(null);
     const [users, setUsers] = useState([]);
     const URL = "http://localhost:4002"
@@ -120,17 +121,17 @@ export const ContextProvider = ({ children }) => {
         }
     }
 
-// delete jobs 
-const deleteJobs = async (id) => {
-     try {
-       const response = await axios.delete(`${URL}/api/jobs/delete-job/${id}`)
-       const data = response.data;
-       alert(data.message);
-       fetchJobs();
-     }catch (error) {
-       console.error("faild to delete",error.massage)
-     }
-}
+    // delete jobs 
+    const deleteJobs = async (id) => {
+        try {
+            const response = await axios.delete(`${URL}/api/jobs/delete-job/${id}`)
+            const data = response.data;
+            alert(data.message);
+            fetchJobs();
+        } catch (error) {
+            console.error("faild to delete", error.massage)
+        }
+    }
     const contextValue = {
         state,
         setState,
@@ -152,6 +153,8 @@ const deleteJobs = async (id) => {
         setUsers,
         deleteUser,
         deleteJobs,
+        editFormShow, 
+        setEditFormShow,
     }
     return (
         <StoreContext.Provider value={contextValue}>
