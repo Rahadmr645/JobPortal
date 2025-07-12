@@ -20,3 +20,19 @@ export const edithProfile = async (req, res ) => {
         res.status(500).json({ message: 'faild updated' })
     }
 }
+
+
+export const addProfilePic = async (req, res) =>{
+  try {
+    
+    const updateUser = await User.findByIdAndUpdate(
+      req.params.id,
+      {profilePic: req.file.path},
+      {new : true}
+      );
+      res.status(200).json({message:"image upload successful "})
+    
+  }catch(error) {
+    res.status(500).json({message:"faild to upload image",  error:error.message})  
+  }
+}
