@@ -1,21 +1,23 @@
 import React, { useContext } from 'react'
 import Navbar from '../components/Navbar';
 import { StoreContext } from '../context/storeContext';
+import JobsRegister from '../features/jobs/JobsRegister';
 
 const DashBoard = () => {
 
-  const { signBtn, user } = useContext(StoreContext);
+  const { signBtn, user,setShowForm,showForm } = useContext(StoreContext);
 
   return (
     <div>
       <Navbar />
+      {showForm && <JobsRegister/>}
       <div className='d-flex gap-3 justify-content-center  mt-5'>
         <div className='profile-container'>
           <h1>{user?.name}</h1>
           <h4>Email: {user?.email}</h4>
-          <h4>Location: </h4>
           <button className='btn btn-outline-success'>Edit Profile</button>
           {/* <button>{signBtn}</button> */}
+          <button className='btn btn-outline-success' onClick={() => setShowForm(true) }>Post Job</button>
         </div>
         <div className='profile-container'>
           <div>

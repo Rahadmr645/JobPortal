@@ -50,7 +50,7 @@ router.post("/create", async (req, res) => {
       password: hassPass,
     });
 
-    const token = JWT.sign({ name: newUser.name, id: newUser._id, email: newUser.email }, process.env.SECRETE_KEY, { expiresIn: '1d' })
+    const token = JWT.sign({ name: newUser.name, id: newUser._id, email: newUser.email, location: newUser.location }, process.env.SECRETE_KEY, { expiresIn: '1d' })
     await newUser.save();
     res.status(200).json({ message: "user create successfull", user: newUser, token: token })
   } catch (error) {
@@ -75,7 +75,7 @@ router.post("/login", async (req, res) => {
 
     if (!comparePass) return res.status(404).json({ message: "invalid credintials" });
 
-    const token = JWT.sign({ name: exist.name, id: exist._id, email: exist.email }, process.env.SECRETE_KEY, { expiresIn: '1d' })
+    const token = JWT.sign({ name: exist.name, id: exist._id, email: exist.email,location:exist.location }, process.env.SECRETE_KEY, { expiresIn: '1d' })
 
     res.status(200).json({ message: `you are wellcome ${exist.name}`, token: token })
   } catch (error) {

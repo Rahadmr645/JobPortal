@@ -4,7 +4,7 @@ import { StoreContext } from '../context/storeContext';
 const Navbar = () => {
 
 
-    const { setShowForm, setLogin, login, chackeLogin, signBtn, setSignBtn } = useContext(StoreContext);
+    const { setLogin, login, chackeLogin, signBtn, setSignBtn } = useContext(StoreContext);
 
     useEffect(() => {
         chackeLogin();
@@ -20,7 +20,7 @@ const Navbar = () => {
                 <div>
                     <ul className='list-unstyled d-flex justify-content-center w-100 align-items-center  gap-5 mt-1' style={{ fontSize: '20px' }}>
                         <Link className='link' to='/'><li>Home</li></Link>
-                        <li style={{ cursor: 'pointer' }} onClick={() => setShowForm(true)} >Jobs</li>
+                        <li style={{ cursor: 'pointer' }} >Jobs</li>
                         <li onClick={() => console.log(token)}>Application</li>
                         {login ? <Link className='link' to={'/dashBoard'}><li>DashBoard</li></Link> : <></>}
                     </ul>
