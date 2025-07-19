@@ -8,13 +8,14 @@ import jobRoutes from './routes/jobRoutes.js'
 import adminRoutes from './routes/adminRoutes.js';
 const app = express();
 
-const port = process.env.port;
+const port = process.env.port || 4002;
 export const DB_URL = process.env.DB_URL;
 
 
 app.use(express.json())
 connectToMongo();
-app.use(cors());
+app.use(cors({
+  origin: '*'}));
 
 
 // routes section
@@ -28,5 +29,5 @@ app.use("/", (req, res) => {
 
 
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Your app is running on http://localhost:${port}`)
+  console.log(`Your app is running on http://192.168.8.221:${port}`)
 })

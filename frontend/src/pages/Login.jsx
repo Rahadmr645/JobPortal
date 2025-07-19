@@ -9,7 +9,7 @@ const Login = () => {
     const [currState, setCurrState] = useState('Login');
 
 
-    const URL = 'http://localhost:4002'
+    const URL = 'http://198.168.8.221:4002'
     const [formData, setFormData] = useState({
         name: '',
         email: '',

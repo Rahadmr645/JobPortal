@@ -16,7 +16,7 @@ export const ContextProvider = ({ children }) => {
     const [editFormShow, setEditFormShow] = useState(false);
     const [user, setUser] = useState(null);
     const [users, setUsers] = useState([]);
-    const URL = "http://localhost:4002"
+    const URL = "http://192.168.8.221:4002"
     const token = localStorage.getItem("token");
 
     // decode function
