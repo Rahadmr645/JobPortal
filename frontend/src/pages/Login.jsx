@@ -1,15 +1,16 @@
 import { useContext, useEffect, useState } from 'react'
 import axios from "axios"
+import { StoreContext } from '../context/storeContext';
 
 const Login = () => {
 
 
-
+    const { URL } = useContext(StoreContext)
     const [showForm, setShowForm] = useState(false);
     const [currState, setCurrState] = useState('Login');
 
 
-    const URL = 'http://198.168.8.221:4002'
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',

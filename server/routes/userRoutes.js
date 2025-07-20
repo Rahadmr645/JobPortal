@@ -7,7 +7,7 @@ import validator from 'validator'
 import isDisposableEmail from 'is-disposable-email';
 import {protect }from '../middleware/authMiddleware.js'
 import upload from '../middleware/imageMiddleware.js'
-import { edithProfile } from "../controllers/userController.js";
+import { deleteUser, edithProfile } from "../controllers/userController.js";
 dotenv.config();
 const router = express.Router();
 
@@ -88,7 +88,8 @@ router.post("/login", async (req, res) => {
 // edith routes
 router.put('/update', protect, upload.single('image'), edithProfile)
 
-
+// delete user routes
+router.delete('/delete-account', protect , deleteUser);
 
 
 export default router;
