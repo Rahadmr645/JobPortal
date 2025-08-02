@@ -21,7 +21,7 @@ const DashBoard = () => {
           <h4>Email: {user?.email}</h4>
           <button className='btn btn-outline-success'>Edit Profile</button>
           {/* <button>{signBtn}</button> */}
-          <button onClick={handleDeleteAccount}>Delete Your account</button>
+          <button className='btn btn-outline-danger' onClick={handleDeleteAccount}>Delete Your account</button>
           <button className='btn btn-outline-success' onClick={() => setShowForm(true) }>Post Job</button>
         </div>
         <div className='profile-container'>
